@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   outline: none;
+   font-family: "SUSE", sans-serif;
+   font-optical-sizing: auto;
+   font-weight: 400;
+   font-style: normal;
+}
+html {
+   background-color: #201f31;
+}
+
+.styled-table {
+   border-collapse: collapse;
+   width: 100%;
+   margin: 10px 10px;
+   overflow: hidden;
+}
+.styled-table thead tr th {
+   background-color: #ffbade;
+   color: #000;
+   text-align: center;
+}
+.styled-table td,
+th {
+   padding: 12px 10px;
+   border: 1px solid #4b4b59;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+   background-color: #373646;
+}
+
+.styled-table tbody tr:last-of-type {
+   border-bottom: 2px solid #ffbade;
+}
+.styled-table tbody tr.active-row {
+   font-weight: bold;
+   color: #ffbade;
+}
+.styled-table thead td {
+   font-size: 14px;
+   white-space: nowrap; /* Prevents wrapping */
+   overflow: hidden; /* Hides overflow text */
+   text-overflow: ellipsis;
+}
+.styled-table tbody td {
+   cursor: pointer;
+}
+.styled-table tbody tr:hover {
+   opacity: 0.8;
+   transform: translate(0, -2px);
+}
+select option {
+   background-color: #373646;
+   padding: 100px 10px;
+}
