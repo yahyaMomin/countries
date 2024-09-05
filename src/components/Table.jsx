@@ -8,7 +8,13 @@ const Table = ({ item }) => {
    };
    return (
       <tr className="active-row">
-         <td>{item.index + 1}</td>
+         <th className="sticky left-0 bg-clip-padding z-50">
+            <img
+               src={`https://flagcdn.com/w20/${item.cca2.toLowerCase()}.png`}
+               width="20"
+               alt={item.cca2}
+            />
+         </th>
          <td className="text-sm  w-20 md:text-base">{item.country}</td>
          <td>{item.cca2}</td>
          <td>{item.rank}</td>

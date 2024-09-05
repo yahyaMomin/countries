@@ -1,16 +1,32 @@
-import { useDispatch } from "react-redux";
-import { setSortBy } from "../store/homeSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setSortBy, setOrder } from "../store/homeSlice";
 
 const Sorting = () => {
    const dispatch = useDispatch();
+   const { order } = useSelector((state) => state.home);
    const changeInput = (e) => {
       const sortBy = e.target.value;
       dispatch(setSortBy(sortBy));
    };
+   const selectInput = (e) => {
+      const name = e.target.name;
+      if (order === name) return;
+      dispatch(setOrder(name));
+   };
+   const getButtonClassName = (name) => {
+      return `
+         px-4 py-2 rounded-md text-black
+         ${
+            order === name
+               ? " bg-primary"
+               : "bg-transparent border border-primary text-white"
+         }
+      `;
+   };
    return (
       <div>
          <div>
-            <div className="max-w-[450px] w-full mx-auto mt-3">
+            <div className="max-w-[450px]  w-full mx-auto mt-3">
                <select
                   defaultValue="rank"
                   onChange={changeInput}
@@ -18,7 +34,7 @@ const Sorting = () => {
                   id="sortBy"
                   className="w-full bg-accent mx-auto p-2 rounded-sm text-primary"
                >
-                  <option value="place&order=lowest">A to Z</option>
+                  <option value="place&by=alphaBet=true">A to Z</option>
                   <option value="area">Area (km²)</option>
                   <option value="landArea">Land Area (km²)</option>
                   <option value="pop2024">population</option>
@@ -63,6 +79,22 @@ const Sorting = () => {
                      Local Purchasing Power Index (Numbeo 2023)
                   </option>
                </select>
+               <div className="flex justify-center items-center gap-3 my-2">
+                  <button
+                     onClick={selectInput}
+                     name="highest"
+                     className={getButtonClassName("highest")}
+                  >
+                     highest
+                  </button>
+                  <button
+                     onClick={selectInput}
+                     name="lowest"
+                     className={getButtonClassName("lowest")}
+                  >
+                     lowest
+                  </button>
+               </div>
             </div>
          </div>
       </div>
