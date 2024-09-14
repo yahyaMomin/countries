@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+   --primary: #e8b86d;
+   --bg: #201f31;
+   --accents: #373646;
+}
+
 * {
    margin: 0;
    padding: 0;
@@ -13,38 +19,36 @@
    font-style: normal;
 }
 html {
-   background-color: #201f31;
+   background-color: var(--bg);
 }
 
 .styled-table {
+   margin: 10px 2px;
    border-collapse: separate;
-   margin: 10px 10px;
 }
 .styled-table thead tr th {
-   background-color: #ffbade;
+   background-color: var(--primary);
    color: #000;
    text-align: center;
    vertical-align: bottom;
    position: sticky;
    top: 0;
+   text-wrap: nowrap;
+   text-overflow: ellipsis;
+   overflow: scroll;
 }
 .styled-table td,
 th {
    padding: 5px 7px;
-   border: 3px solid #4b4b59;
-   border-radius: 2px;
 }
 
 .styled-table tbody tr:nth-of-type(even) {
-   background-color: #373646;
+   background-color: var(--bg);
 }
 
-.styled-table tbody tr:last-of-type {
-   border-bottom: 2px solid #ffbade;
-}
 .styled-table tbody tr.active-row {
    font-weight: bold;
-   color: #ffbade;
+   color: #fff;
 }
 .styled-table thead td {
    font-size: 14px;
@@ -52,6 +56,7 @@ th {
    overflow: hidden; /* Hides overflow text */
    text-overflow: ellipsis;
 }
+
 .styled-table tbody td {
    cursor: pointer;
 }
@@ -59,6 +64,20 @@ th {
    opacity: 0.8;
 }
 select option {
-   background-color: #373646;
+   background-color: var(--accents);
    padding: 100px 10px;
+}
+.selected td,
+.selected th {
+   background-color: var(--primary) !important;
+   color: black !important;
+}
+input {
+   border: none;
+   outline: none;
+   background-color: var(--accents);
+   padding: 4px 8px;
+}
+input:focus {
+   outline: none;
 }
